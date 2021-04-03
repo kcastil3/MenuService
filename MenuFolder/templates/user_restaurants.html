@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard for Your Businesses</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script type="text/javascript">
+        function updateTextInput(val) {     
+            document.getElementById('textForRange').innerHTML = val + " miles";
+        }
+    </script>
+</head>
+<body>
+    
+    {% include 'partials/_header.html' %}
+    <div id="disp-rest-header">
+        <a href="{% url 'add_restaurant' %}"> Click to add new restaurant</a>
+        <br>
+        <br>
+        <h1> Your Restaurants</h1>
+        {% for restaurant in restaurants %}
+            <a href="{% url 'restaurant_page' restaurant.restaurant_id %}"> {{restaurant.restaurant_name}} </a>
+            <br>
+            <br>
+        {% endfor %}    
+    </div>
+    {% include 'partials/_footer.html' %}
+
+</body>
+</html>

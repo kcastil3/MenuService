@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online!</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script type="text/javascript">
+        function updateTextInput(val) {     
+            document.getElementById('textForRange').innerHTML = val + " miles";
+        }
+    </script>
+</head>
+<body>
+    
+    {% include 'partials/_header.html' %}
+    
+    <div id="search-field">
+        <form action="search">
+            <h3> Find Restaurants Near You</h3>
+            <label for="user_address">What is your address?</label>
+            <input type="text">
+            <br>
+            <label for="max_dist"> Max Distance </label>
+            <input type="range" min="0" max="30" step="1" oninput="updateTextInput(this.value);">
+            <h5 id="textForRange"> 15 miles </h5>
+            <label for="search_terms"> What are you hungry for?</label>
+            <input type="text">
+            <br>
+            <input type="submit">   
+        </form>
+    </div>
+    
+    <div id="restaurant-return-field">
+    </div>
+    
+    {% include 'partials/_footer.html' %}
+
+</body>
+</html>

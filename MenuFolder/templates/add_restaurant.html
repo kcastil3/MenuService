@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join a Community of Small Businesses</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script>
+        function showBusinessInform(){
+            document.getElementById("signup-form__business-inform").hidden = false;
+        }
+        function clearBusinessInform(){
+            document.getElementById("signup-form__business-inform").hidden = true
+        }
+    </script>
+</head>
+<body>
+    {% include 'partials/_header.html' %}
+    <div id="add-rest-form">
+        <h3> Please fill out all fields to add your restaurant</h3>
+        <form action="{% url 'add_restaurant' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <br>
+            <label for="name"> Business Name</label>
+            <input type="text" name="name" required value="{{name}}">
+            <label for="address"> Business Address</label>
+            <input type="text" name="address" required value="{{address}}">
+            <label for="city"> City </label>
+            <input type="text" name="city" required value="{{city}}">
+            <label for="zipcode"> Zipcode</label>
+            <input type="text" name="zipcode" required value="{{zipcode}}">
+            <label for="email"> Business Email Address</label>
+            <input type="text" name="email" required value="{{email}}"> 
+            <label for="phone"> Business Phone Number </label>
+            <input type="text" name="phone" placeholder="xxx-xxx-xxxx" required value="{{phone}}">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% include 'partials/_footer.html' %}
+</body>
+</html>

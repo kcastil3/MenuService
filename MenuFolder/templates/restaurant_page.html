@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online!</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script type="text/javascript">
+        function updateTextInput(val) {     
+            document.getElementById('textForRange').innerHTML = val + " miles";
+        }
+    </script>
+</head>
+<body>
+    
+    {% include 'partials/_header.html' %}
+    <div id="restaurant-info">
+        <h1> {{ restaurant.restaurant_name }} </h1>
+        <p> Call us: {{ restaurant.rest_phone }} </p>
+        <p> Visit us at {{ restaurant.rest_address }} </p>
+        {{ restaurant.photo_main }}
+        <p>Hours: {{ restaurant.open_time }} - {{ restaurant.closing_time }}</p> 
+        <a href="{% url 'new_menu'  restaurant.restaurant_id %}"> Click here to add a new menu for {{ restaurant.restaurant_name }}<a>
+    </div>
+    {% include 'partials/_menu_listings.html' %}
+    {% include 'partials/_footer.html' %}
+
+</body>
+</html>

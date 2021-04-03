@@ -1,0 +1,10 @@
+<!-- Menu Listing -->
+<div id="menu_listing" >
+    <h1> {{ menu.name }}</h1>
+    <table id = "food-items">
+        {% for item in menu.food %}
+            <td> item.name </td> 
+            <td> item.price </td>
+        {% endfor %}
+    </table>
+</div>

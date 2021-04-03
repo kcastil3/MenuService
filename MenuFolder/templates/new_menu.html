@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online!</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script type="text/javascript">
+
+        var foodCount = 0;
+        var currentId = "new-field-"+foodCount;
+
+        function updateTextInput(val) {     
+            document.getElementById('textForRange').innerHTML = val + " miles";
+        }
+
+        function checkMenuType() {
+            var selectedVal = document.getElementById('menu-selector').value;
+            var input = document.getElementById("hidden-menu-input");
+            if ( selectedVal === "Custom" ) {
+                input.style.display = "block";
+            }
+            else {
+                input.style.display = "none";
+            }
+        }
+
+        function newTextInput(name, placeholder, parent){
+            var inputField;
+            if ( placeholder.length < 15 ) {
+                inputField = document.createElement("input");
+                inputField.type = "text";
+            }
+            else {
+                inputField = document.createElement("textarea");
+                inputField.rows = 3;
+                inputField.cols = 40;
+                inputField.maxLength = 200;
+            }
+            
+            inputField.name = name;
+            inputField.placeholder = placeholder;
+
+            parent.appendChild(inputField);
+        }
+
+        function addNumberInput(parent, min, max, value){
+            var numberSelecter = document.createElement("INPUT");
+            numberSelecter.setAttribute("type", "number");
+            numberSelecter.setAttribute("value", value);
+            numberSelecter.setAttribute("min", min);
+            numberSelecter.setAttribute("max", max);
+            parent.appendChild(numberSelecter);
+        }
+
+        function newField() { //TODO Maybe use dragging tool to set price?
+            if (foodCount <= 10){
+                foodCount+=1;
+                currentId = "new-field-"+foodCount;
+
+                const aboveDiv = document.getElementById("new-menu-form");
+                const newDiv = document.createElement("div");
+                newDiv.id = currentId;
+
+                newTextInput("food-name", "Food Name", newDiv);
+                newTextInput("food-description", "Description of food (200 characters or less)", newDiv);
+                
+                addNumberInput(newDiv, 0, 99, 9);
+                addNumberInput(newDiv, 0, 99, 99);
+
+                aboveDiv.appendChild(newDiv);
+            }
+            else {
+                window.alert("A single menu cannot contain more than 10 items, this helps keep the customer experience enjoyable.")
+            }
+        }
+
+        function removeField() {
+            var deleteDiv = document.getElementById(currentId);
+            deleteDiv.remove();
+          
+            foodCount-=1;
+            currentId = "new-field-"+foodCount;
+            
+        }
+    </script>
+</head>
+<body>
+    
+    {% include 'partials/_header.html' %}
+    <div id="new-menu-form">
+        <h1> Create a new menu for {{ restaurant.restaurant_name }}</h1>
+        <form>
+            {% csrf_token %}            
+            <label for='type'> Menu Type</label>
+            <select name="type" required value="{{type}}" id="menu-selector" onchange="checkMenuType()">
+            <option value="Breakfast"> Breakfast </option>
+            <option value="Lunch"> Lunch </option>
+            <option value="Dinner">Dinner </option> 
+            <option value="Appeteizers"> Appeteizers </option>
+            <option value="Soups"> Soups </option>
+            <option value="Salads"> Salads </option>
+            <option value="Drinks"> Drinks </option>
+            <option value="Sides"> Sides </option>
+            <option value="Sides"> Specialties </option>
+            <option value="Custom"> Custom </option>
+            </select>
+
+            <br>
+            <input type="text" name="name" value="{{name}}" style="display:none" id="hidden-menu-input" placeholder="Custom Menu Type"> 
+            <input type="button" value="Add Item" onclick="newField()">
+            <input type="button" value="Remove Item" onclick="removeField()">
+      
+
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% include 'partials/_footer.html' %}
+
+</body>
+</html>

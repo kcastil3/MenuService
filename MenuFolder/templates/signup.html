@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join a Community of Small Businesses</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script>
+        function showBusinessInform(){
+            document.getElementById("signup-form__business-inform").hidden = false;
+        }
+        function clearBusinessInform(){
+            document.getElementById("signup-form__business-inform").hidden = true
+        }
+    </script>
+</head>
+<body>
+    {% include 'partials/_header.html' %}
+    <div id="signup-form">
+        <h3> Join a Network of Small Businesses</h3>
+        <form action="{% url 'signup' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label> Email Address</label>
+            <input type="text" name="email" required value="{{email}}"> 
+            <label for="password"> Password </label>
+            <br>
+            <input type="password" placeholder="Include number, letter, and symbol" name="password_1" required value="{{password_1}}">
+            <br>
+            <label for="password_confirm"> Confirm Password</label>
+            <input type="password" placeholder="Reenter password" name="password_2" required value="{{password_2}}">
+            <div id="signup-form__business-inform" hidden>
+                <label> After submitting, you will be asked to input your restuarant information.</label>
+            </div>
+            <br>
+            <input type="submit" value="Register">
+            <br>
+        </form>
+    </div>
+    {% include 'partials/_footer.html' %}
+</body>
+</html>

@@ -1,0 +1,331 @@
+body{
+    background-image: url("images/eat.jpg");
+}
+
+/* Start Main Menu Bar */
+#title{
+    color: snow;
+    position: absolute;
+    text-align: right;
+    right: 0vw;
+    top: -5vh;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-left: 99vw;
+    padding-right: 5vw;
+    padding-top: 5vh;
+    background: linear-gradient(#343fbb,#01052c);
+    height: 8vh;
+    border-bottom-style: solid;
+    border-bottom-color:rgb(199, 199, 231);
+}
+
+#menu-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    display: inline-block;
+}
+
+#menu-bar__content{
+    font-family: 'Oswald', sans-serif;
+    max-height: 0;
+    overflow: hidden;
+    color: snow;
+}
+
+#menu-bar__content ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+#menu-bar__content a{
+    display: block;
+    padding: 2vh;
+    text-decoration: none;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #ddb3d8;
+    font-size: large;
+}
+
+#menu-bar__content a:visited{
+    color: snow;
+}
+
+#menu-bar__content a:active{
+    color: #bf80ff;
+}
+
+#menu-bar__content a:hover{
+    color: #bf80ff;
+}
+
+#menu-bar__selector__label{
+    position: relative;
+    top: 1vh;
+    left: 3vw;
+    cursor: pointer;
+    font-size: 3vh;
+    display: block;
+    color: snow;
+    background: url(images/menu.png) no-repeat left center;   
+    height: 8vmax;
+}
+
+#menu-bar input{
+    display: none;
+}
+
+#menu-bar__selector:checked ~ #menu-bar__content{
+    max-height: 100%;
+    box-shadow: 1px 2px 3px rgba(0,0,0, 0.2);
+    background-color: rgb(9, 1, 32);
+    border-radius: 5%;
+}
+
+#menu-bar__selector:checked ~ #menu-bar__selector__label{
+    background: url(images/error.png) no-repeat left center;
+}
+
+/*End Main Menu Bar Main Menu Bar */
+
+/* Start signup form */
+#signup-form{
+    position: absolute;
+    color: snow;
+    z-index: 20;
+    top: 15vh;
+    left: 35vw;
+}
+
+#signup-form form label{
+    display: inline;
+}
+
+#signup-form form input{
+    display: block;
+    height: 6vh;
+}
+
+#signup-form input[type=radio]{
+    display: inline;
+}
+
+#signup-form input[type=submit]{
+    width: 40vw;
+    height: 7vh;
+    background-color: #e6e6e6;
+    border-radius: 1vh;
+    font-size: medium;
+    border-color: black;
+}
+
+/* End signup form */
+
+/* Start Login Portal*/
+#index-content{
+    position: absolute;
+    top: 10vh;
+    color: snow;
+}
+
+#login-portal{
+    z-index: 2;
+    position: relative;
+    top: 30vh;
+    left: 20vw;
+    min-width: 20vw;
+    max-width: 20vw;
+    display: block;
+    color: snow;
+}
+
+#login-portal form{
+    z-index: 2;
+    display: block;
+    padding-left: 1vh;
+    width: 50vw;
+}
+
+#login-portal form input{
+    display: block;
+    height: 6vh;
+}
+
+#login-portal form label{
+    display: block;
+}
+
+#login-portal form input[type=submit]{
+    width: 40vw;
+    height: 7vh;
+    background-color: #e6e6e6;
+    border-radius: 1vh;
+    font-size: medium;
+    border-color: black;
+}
+/* End Login Portal*/
+
+/* Start Restaurant Search Form */
+#search-field{
+    position: absolute;
+    top: 15vh;
+    left: 25vw;
+    display: block;
+    color: floralwhite;
+}
+
+#search-field h3{
+    display: block;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 2em;
+    padding-bottom: 0.5em;
+}
+
+#search-field form{
+    display: block;
+}
+
+#search-field form input[type=range]{
+    width: 45vw;
+}
+
+#search-field form label{
+    display: block;
+}
+
+#search-field form input{
+    display: block;
+}
+
+#search-field form input[type=text]{
+    width: 38vw;
+    height: 6vh;
+}
+
+#search-field form input[type=submit]{
+    width: 50vw;
+    height: 7vh;
+    background-color: #e6e6e6;
+    border-radius: 1vh;
+    font-size: medium;
+    border-color: black;
+}
+
+/* End Restaurant Search form */
+
+/* Start User Restaurant displays */
+#disp-rest-header{
+    z-index: 20;
+    position: fixed;
+    color: white;
+    top: 15vh;
+}
+
+#disp-rest-header h1{
+    color: snow;
+    text-decoration: underline;
+}
+
+#disp-rest-header a{
+    font-size: 3.5vh;
+    color: snow;
+    text-decoration: none;
+}
+
+#disp-rest-header a:hover{
+    color: #bf80ff;
+}
+
+/* End User Restaurant displays */
+
+/* Start Restauraunt Signup form */
+#add-rest-form{
+    position: absolute;
+    color: snow;
+    z-index: 1;
+    top: 15vh;
+    left: 20vw;
+    display: block;
+}
+
+#add-rest-form input{
+    display: block;
+}
+
+#add-rest-form input[type=submit]{
+    width: 50vw;
+    height: 7vh;
+    background-color: #e6e6e6;
+    border-radius: 1vh;
+    font-size: medium;
+    border-color: black;
+}
+/* End Restaurant Signup form */
+
+/* Start Restaurant Display info */
+#restaurant-info{
+    z-index: 20;
+    position: absolute;
+    top: 20vh;
+    left: 30vw;
+    color: white; 
+}
+
+/* End Restaurant Display info */
+
+/* Start new menu form */
+#new-menu-form{
+    display: block;
+    color: white;
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+}
+
+#new-menu-form input[type=text]{
+    display: inline;
+    width: 40vw;
+}
+
+#new-menu-form input[type=button]{
+    width: 30vw;
+    height: 6vh;
+    background-color: #e6e6e6;
+    border-radius: 1vh;
+    font-size: medium;
+    border-color: black;
+}
+
+#new-menu-form input[type=number]{
+    width: 10vw;
+}
+#new-menu-form input[type=submit]{
+    width: 40vw;
+    height: 7vh;
+    background-color: #e6e6e6;
+    border-radius: 1vh;
+    font-size: medium;
+    border-color: black;
+}
+/* End new menu form */
+
+/* Start Footer */
+#footer{
+    z-index: 10;
+    position: fixed;
+    bottom: 0vh;
+    left: 0;
+    min-height: 10vh;
+    max-height: 20vh;
+    min-width: 100vw;
+    display: inline;
+}
+
+.footer__contact{
+    display: inherit;
+    color: white;
+}
+
+/* End Footer */

@@ -1,0 +1,19 @@
+<!-- Login Portal -->
+<div id="login-portal">
+    {% if request.user.is_authenticated %}
+        <h3> Welcome! {{ user }}</h3>
+    {% else %}
+        <h3> Login and Start Ordering!</h3>
+        <form action="{% url 'login_view' %}" method="post">
+            {% csrf_token %}
+            <label for="email"> Email</label>
+            <input type="email" name="email" required value="{{email}}">
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" required value="{{password}}">
+            <br>
+            <input type="submit">   
+        </form>
+        <a href="https://google.com">Forgot your password?</a>
+    {% endif %}
+</div>
